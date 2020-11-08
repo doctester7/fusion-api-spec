@@ -132,6 +132,47 @@
           }
         }
       }
+    },
+    "/api/v2/ifi/{ifiID}/resourceByVector" : {
+      "get" : {
+        "tags" : [ "Resource" ],
+        "description" : "Returns list of matching resources",
+        "operationId" : "getResourceByAccountHolder",
+        "parameters" : [ {
+          "name" : "ifiID",
+          "in" : "path",
+          "description" : "tenant Identifier",
+          "required" : true,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int64"
+          },
+          "example" : 111111
+        } ],
+        "requestBody" : {
+          "description" : "view Type",
+          "content" : {
+            "*/*" : {
+              "schema" : {
+                "type" : "string"
+              }
+            }
+          },
+          "required" : false
+        },
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "content" : {
+              "*/*" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ListResourceResponse"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components" : {
@@ -265,6 +306,23 @@
           "modifiedAt" : {
             "type" : "string",
             "format" : "date-time"
+          }
+        }
+      },
+      "ListResourceResponse" : {
+        "type" : "object",
+        "properties" : {
+          "headers" : {
+            "type" : "object",
+            "additionalProperties" : {
+              "type" : "string"
+            }
+          },
+          "resources" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/Resource"
+            }
           }
         }
       },

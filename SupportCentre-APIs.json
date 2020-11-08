@@ -578,6 +578,10 @@
           "remarks" : {
             "type" : "string"
           },
+          "couponCount" : {
+            "type" : "integer",
+            "format" : "int64"
+          },
           "attributes" : {
             "type" : "object",
             "additionalProperties" : {

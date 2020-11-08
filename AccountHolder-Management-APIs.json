@@ -2330,7 +2330,7 @@
               "properties" : { }
             }
           },
-          "metadata" : {
+          "page" : {
             "$ref" : "#/components/schemas/PageMetadata"
           }
         }

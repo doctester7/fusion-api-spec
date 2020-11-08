@@ -4660,6 +4660,262 @@
         }
       }
     },
+    "/api/v2/ifi/{ifiID}/accountHolders/{accountHolderID}/transactionPolicies" : {
+      "get" : {
+        "summary" : "List All Account Holder TransactionPolicy",
+        "operationId" : "listAllAccountHolderTransactionPolicies",
+        "parameters" : [ {
+          "name" : "ifiID",
+          "in" : "path",
+          "description" : "ID of the IFI (on-boarded organization).",
+          "required" : true,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int64"
+          },
+          "example" : 123123
+        }, {
+          "name" : "accountHolderID",
+          "in" : "path",
+          "description" : "ID  of the account holder whose policies are being retrieved",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : "aa267641-f475-4acb-859e-bb9c60d3e9db"
+        } ],
+        "requestBody" : {
+          "content" : {
+            "*/*" : {
+              "schema" : {
+                "type" : "string"
+              }
+            }
+          },
+          "required" : false
+        },
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "content" : {
+              "*/*" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ListTransactionPoliciesResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "summary" : "Create Account Holder TransactionPolicy",
+        "operationId" : "createAccountHolderTransactionPolicy",
+        "parameters" : [ {
+          "name" : "ifiID",
+          "in" : "path",
+          "description" : "ID of the IFI (on-boarded organization).",
+          "required" : true,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int64"
+          },
+          "example" : 123123
+        }, {
+          "name" : "accountHolderID",
+          "in" : "path",
+          "description" : "ID of the account holder for whom a policy is being created",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : "aa267641-f475-4acb-859e-bb9c60d3e9db"
+        } ],
+        "requestBody" : {
+          "content" : {
+            "*/*" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/CreateTransactionPolicyRequest"
+              }
+            }
+          },
+          "required" : false
+        },
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "content" : {
+              "*/*" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/TransactionPolicyResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2/ifi/{ifiID}/accountHolders/{accountHolderID}/transactionPolicies/{transactionPolicyID}" : {
+      "get" : {
+        "summary" : "Get Account Holder TransactionPolicy",
+        "operationId" : "getAccountHolderTransactionPolicy",
+        "parameters" : [ {
+          "name" : "ifiID",
+          "in" : "path",
+          "description" : "ID of the IFI (on-boarded organization).",
+          "required" : true,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int64"
+          },
+          "example" : 123123
+        }, {
+          "name" : "accountHolderID",
+          "in" : "path",
+          "description" : "ID of the account holder whose particular policy is being retrieved",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : "aa267641-f475-4acb-859e-bb9c60d3e9db"
+        }, {
+          "name" : "transactionPolicyID",
+          "in" : "path",
+          "description" : "Transaction Policy ID of the account holder",
+          "required" : true,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int64"
+          },
+          "example" : 123456789101112
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "content" : {
+              "*/*" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/TransactionPolicyResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put" : {
+        "summary" : "Replace Account Holder TransactionPolicy",
+        "operationId" : "replaceAccountHolderTransactionPolicy",
+        "parameters" : [ {
+          "name" : "ifiID",
+          "in" : "path",
+          "description" : "ID of the IFI (on-boarded organization).",
+          "required" : true,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int64"
+          },
+          "example" : 123123
+        }, {
+          "name" : "accountHolderID",
+          "in" : "path",
+          "description" : "ID of the account holder whose policy is being updated",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : "aa267641-f475-4acb-859e-bb9c60d3e9db"
+        }, {
+          "name" : "transactionPolicyID",
+          "in" : "path",
+          "description" : "Transaction Policy ID of the account holder",
+          "required" : true,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int64"
+          },
+          "example" : 123456789101112
+        } ],
+        "requestBody" : {
+          "content" : {
+            "*/*" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/ReplaceTransactionPolicyRequest"
+              }
+            }
+          },
+          "required" : false
+        },
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "content" : {
+              "*/*" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/TransactionPolicyResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2/ifi/{ifiID}/accountHolders/{accountHolderID}/transactionPolicies/{transactionPolicyID}/{state}" : {
+      "patch" : {
+        "summary" : "Update Account Holder TransactionPolicy State",
+        "operationId" : "updateAccountHolderTransactionPolicyState",
+        "parameters" : [ {
+          "name" : "ifiID",
+          "in" : "path",
+          "description" : "ID of the IFI (on-boarded organization).",
+          "required" : true,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int64"
+          },
+          "example" : 123123
+        }, {
+          "name" : "accountHolderID",
+          "in" : "path",
+          "description" : "ID of the account holder whose policy state is being updated",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : "aa267641-f475-4acb-859e-bb9c60d3e9db"
+        }, {
+          "name" : "transactionPolicyID",
+          "in" : "path",
+          "description" : "Transaction Policy ID of the account holder",
+          "required" : true,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int64"
+          },
+          "example" : 123456789101112
+        }, {
+          "name" : "state",
+          "in" : "path",
+          "description" : "Policy State of Transaction Policy",
+          "required" : true,
+          "schema" : {
+            "type" : "string",
+            "enum" : [ "ENABLED", "DISABLED" ]
+          },
+          "example" : "ENABLED or DISABLED"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "content" : {
+              "*/*" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/TransactionPolicyResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v2/ifi/{ifiID}/applications" : {
       "get" : {
         "summary" : "Get All Applications",
@@ -7899,43 +8155,6 @@
               "*/*" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/PagedModel"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/v2/ifi/{ifiID}/resourceByVector" : {
-      "get" : {
-        "summary" : "Get resources vector",
-        "operationId" : "getResourceByAccountHolder",
-        "parameters" : [ {
-          "name" : "ifiID",
-          "in" : "path",
-          "required" : true,
-          "schema" : {
-            "type" : "integer",
-            "format" : "int64"
-          }
-        } ],
-        "requestBody" : {
-          "content" : {
-            "*/*" : {
-              "schema" : {
-                "type" : "string"
-              }
-            }
-          },
-          "required" : false
-        },
-        "responses" : {
-          "200" : {
-            "description" : "successful operation",
-            "content" : {
-              "*/*" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/Resource"
                 }
               }
             }
@@ -11605,17 +11824,14 @@
           "asString" : {
             "type" : "string"
           },
-          "asJsonNull" : {
-            "$ref" : "#/components/schemas/JsonNull"
-          },
-          "asJsonPrimitive" : {
-            "$ref" : "#/components/schemas/JsonPrimitive"
+          "asJsonObject" : {
+            "$ref" : "#/components/schemas/JsonObject"
           },
           "asJsonArray" : {
             "$ref" : "#/components/schemas/JsonArray"
           },
-          "asJsonObject" : {
-            "$ref" : "#/components/schemas/JsonObject"
+          "asJsonPrimitive" : {
+            "$ref" : "#/components/schemas/JsonPrimitive"
           },
           "jsonArray" : {
             "type" : "boolean"
@@ -11628,6 +11844,9 @@
           },
           "jsonNull" : {
             "type" : "boolean"
+          },
+          "asJsonNull" : {
+            "$ref" : "#/components/schemas/JsonNull"
           }
         }
       },
@@ -11637,20 +11856,14 @@
           "asBoolean" : {
             "type" : "boolean"
           },
-          "asJsonNull" : {
-            "$ref" : "#/components/schemas/JsonNull"
-          },
-          "asNumber" : {
-            "$ref" : "#/components/schemas/Number"
-          },
-          "asJsonPrimitive" : {
-            "$ref" : "#/components/schemas/JsonPrimitive"
+          "asJsonObject" : {
+            "$ref" : "#/components/schemas/JsonObject"
           },
           "asJsonArray" : {
             "$ref" : "#/components/schemas/JsonArray"
           },
-          "asJsonObject" : {
-            "$ref" : "#/components/schemas/JsonObject"
+          "asJsonPrimitive" : {
+            "$ref" : "#/components/schemas/JsonPrimitive"
           },
           "jsonArray" : {
             "type" : "boolean"
@@ -11663,6 +11876,12 @@
           },
           "jsonNull" : {
             "type" : "boolean"
+          },
+          "asJsonNull" : {
+            "$ref" : "#/components/schemas/JsonNull"
+          },
+          "asNumber" : {
+            "$ref" : "#/components/schemas/Number"
           },
           "asDouble" : {
             "type" : "number",
@@ -11709,20 +11928,14 @@
           "asBoolean" : {
             "type" : "boolean"
           },
-          "asJsonNull" : {
-            "$ref" : "#/components/schemas/JsonNull"
-          },
-          "asNumber" : {
-            "$ref" : "#/components/schemas/Number"
-          },
-          "asJsonPrimitive" : {
-            "$ref" : "#/components/schemas/JsonPrimitive"
+          "asJsonObject" : {
+            "$ref" : "#/components/schemas/JsonObject"
           },
           "asJsonArray" : {
             "$ref" : "#/components/schemas/JsonArray"
           },
-          "asJsonObject" : {
-            "$ref" : "#/components/schemas/JsonObject"
+          "asJsonPrimitive" : {
+            "$ref" : "#/components/schemas/JsonPrimitive"
           },
           "jsonArray" : {
             "type" : "boolean"
@@ -11735,6 +11948,12 @@
           },
           "jsonNull" : {
             "type" : "boolean"
+          },
+          "asJsonNull" : {
+            "$ref" : "#/components/schemas/JsonNull"
+          },
+          "asNumber" : {
+            "$ref" : "#/components/schemas/Number"
           },
           "asDouble" : {
             "type" : "number",
@@ -11781,20 +12000,14 @@
           "asBoolean" : {
             "type" : "boolean"
           },
-          "asJsonNull" : {
-            "$ref" : "#/components/schemas/JsonNull"
-          },
-          "asNumber" : {
-            "$ref" : "#/components/schemas/Number"
-          },
-          "asJsonPrimitive" : {
-            "$ref" : "#/components/schemas/JsonPrimitive"
+          "asJsonObject" : {
+            "$ref" : "#/components/schemas/JsonObject"
           },
           "asJsonArray" : {
             "$ref" : "#/components/schemas/JsonArray"
           },
-          "asJsonObject" : {
-            "$ref" : "#/components/schemas/JsonObject"
+          "asJsonPrimitive" : {
+            "$ref" : "#/components/schemas/JsonPrimitive"
           },
           "jsonArray" : {
             "type" : "boolean"
@@ -11807,6 +12020,12 @@
           },
           "jsonNull" : {
             "type" : "boolean"
+          },
+          "asJsonNull" : {
+            "$ref" : "#/components/schemas/JsonNull"
+          },
+          "asNumber" : {
+            "$ref" : "#/components/schemas/Number"
           },
           "asDouble" : {
             "type" : "number",
@@ -11853,10 +12072,13 @@
           "number" : {
             "type" : "boolean"
           },
+          "boolean" : {
+            "type" : "boolean"
+          },
           "asBoolean" : {
             "type" : "boolean"
           },
-          "boolean" : {
+          "string" : {
             "type" : "boolean"
           },
           "asNumber" : {
@@ -11896,23 +12118,17 @@
             "type" : "integer",
             "format" : "int32"
           },
-          "string" : {
-            "type" : "boolean"
-          },
           "asString" : {
             "type" : "string"
           },
-          "asJsonNull" : {
-            "$ref" : "#/components/schemas/JsonNull"
-          },
-          "asJsonPrimitive" : {
-            "$ref" : "#/components/schemas/JsonPrimitive"
+          "asJsonObject" : {
+            "$ref" : "#/components/schemas/JsonObject"
           },
           "asJsonArray" : {
             "$ref" : "#/components/schemas/JsonArray"
           },
-          "asJsonObject" : {
-            "$ref" : "#/components/schemas/JsonObject"
+          "asJsonPrimitive" : {
+            "$ref" : "#/components/schemas/JsonPrimitive"
           },
           "jsonArray" : {
             "type" : "boolean"
@@ -11925,6 +12141,9 @@
           },
           "jsonNull" : {
             "type" : "boolean"
+          },
+          "asJsonNull" : {
+            "$ref" : "#/components/schemas/JsonNull"
           }
         }
       },
@@ -12250,7 +12469,7 @@
               "properties" : { }
             }
           },
-          "metadata" : {
+          "page" : {
             "$ref" : "#/components/schemas/PageMetadata"
           }
         }
